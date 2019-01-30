@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{name}}</h1>
+      <input-text v-model="gameName" lbl="Game name"></input-text><br />
+      <directory-picker v-model="location" lbl="Location"></directory-picker>
+      <submit-btn text="Create" @click="createGame"></submit-btn>
+    </div>
+    <script>
+
+      const {dialog} = require('electron').remote;
+      const fs = require('fs');
+      const path = require('path');
+      const {Game} = require('./game');
+
+      Vue.component('input-text', {
+        template: `
+          <label>
+            {{lbl}}:
+            <input type="text" v-bind:value="value" v-on:input="onInput"/>
+          </label>
+        `,
+        props: ['lbl', 'value'],
+        methods: {
+          onInput: function(event) {
+            this.$emit('input', event.target.value);
+          },
+        }
+      });
+
+      Vue.component('directory-picker', {
+        template: `
+          <div>
+            <input-text :lbl="lbl" :value="value" @input="onInput"></input-text>
+            <button @click="pickFolder" type="button">...</button>
+          </div>
+        `,
+        props: ['lbl', 'value'],
+        methods: {
+          onInput: function(value) {
+            this.$emit('input', value);
+          },
+          pickFolder() {
+              const paths = dialog.showOpenDialog({properties: ['openDirectory']});
+              if (paths) {
+                this.onInput(paths[0]);
+              }
+          },
+        },
+      });
+
+      Vue.component('submit-btn', {
+        template: '<button @click="onClick" type="submit">{{text}}</button>',
+        props: ['text'],
+        methods: {
+          onClick: function() {
+            this.$emit('click');
+          },
+        },
+      });
+
+      var app = new Vue({
+        el: '#app',
+        data: {
+          name: 'Game Creator',
+          gameName: '',
+          location: '',
+        },
+        methods: {
+          createGame: function() {
+            const workspaceDirectory = path.join(this.location, this.gameName);
+            fs.mkdir(workspaceDirectory, (err) => {
+              if (err) {
+                console.error(err);
+                return;
+              }
+
+              const game = new Game(this.gameName);
+              
+              const gameFileName = path.join(workspaceDirectory, 'game.json');
+
+              fs.writeFile(gameFileName, JSON.stringify(game), (err) => {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+              });
+            });
+          },
+        },
+      });
+
+    </script>
+  </body>
+</html>

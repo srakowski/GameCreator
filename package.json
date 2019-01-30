@@ -1,0 +1,22 @@
+{
+  "name": "gamecreator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srakowski/GameCreator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srakowski/GameCreator/issues"
+  },
+  "homepage": "https://github.com/srakowski/GameCreator#readme",
+  "devDependencies": {
+    "electron": "^4.0.3"
+  }
+}
