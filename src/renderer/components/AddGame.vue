@@ -11,6 +11,8 @@
       label="Location"
       v-model="location"
     ></directory-picker>
+
+    <button @click="createGame">Create</button>
   </div>
 </template>
 
@@ -28,6 +30,11 @@ export default {
       name: 'Controdazone',
       location: '',
     };
+  },
+  methods: {
+    createGame() {
+      this.$router.push({ name: 'editor-page' });
+    },
   },
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <add-game></add-game>
+    <router-link :to="{name: 'editor-page'}">Editor</router-link>
   </div>
 </template>
 
