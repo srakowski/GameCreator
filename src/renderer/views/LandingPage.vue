@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AddGame from './AddGame.vue';
+import AddGame from '../components/AddGame.vue';
 
 export default {
   components: {

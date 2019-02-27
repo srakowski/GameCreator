@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import TextInput from './Common/TextInput.vue';
-import DirectoryPicker from './Common/DirectoryPicker.vue';
+import TextInput from './TextInput.vue';
+import DirectoryPicker from './DirectoryPicker.vue';
 
 export default {
   components: {
@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      name: 'Controdazone',
+      name: '',
       location: '',
     };
   },

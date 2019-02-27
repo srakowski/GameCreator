@@ -8,17 +8,17 @@ export default new Router({
     {
       path: '/',
       name: 'landing-page',
-      component: require('@/components/LandingPage').default,
+      component: require('@/views/LandingPage').default,
     },
     {
       path: '/editor',
       name: 'editor-page',
-      component: require('@/components/EditorPage').default,
+      component: require('@/views/GameEditorPage').default,
       children: [
         {
           path: 'code',
           name: 'code-editor',
-          component: require('@/components/CodeEditor').default,
+          component: require('@/views/CodeEditor').default,
         },
       ],
     },

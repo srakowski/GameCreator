@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card primary">
         <h2>Create something new</h2>
     </div>
 </template>
