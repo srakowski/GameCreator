@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import games from '../../libs/games.js';
 
-import { createPersistedState, createSharedMutations } from 'vuex-electron';
+import { createPersistedState } from 'vuex-electron';
 
 Vue.use(Vuex);
 
@@ -35,7 +35,6 @@ const actions = {
 export default new Vuex.Store({
   plugins: [
     createPersistedState(),
-    createSharedMutations(),
   ],
   strict: process.env.NODE_ENV !== 'production',
   state,

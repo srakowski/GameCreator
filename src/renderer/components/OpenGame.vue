@@ -35,7 +35,9 @@ export default {
         const path = paths[0];
         this.$store.dispatch('openGame', path)
           .then((gameOpened) => {
-            this.$router.push({name: 'editor-page'});
+            if (gameOpened) {
+              this.$router.push({name: 'editor-page'});
+            }
           });
       }
     },
