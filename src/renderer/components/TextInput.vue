@@ -1,8 +1,12 @@
 <template>
-  <label>
-    {{label}}
-    <input type="text" :value="value" @input="onInput" />
-  </label>
+  <div class="field">
+    <label>
+      <span class="label">{{label}}</span>
+      <div class="control">
+        <input class="input" type="text" :value="value" @input="onInput" />
+      </div>
+    </label>
+  </div>
 </template>
 
 <script>

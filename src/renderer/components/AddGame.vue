@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{name}}</h1>
+    <h1 class="title">Create something new</h1>
 
     <text-input
       label="Name"
@@ -12,7 +12,11 @@
       v-model="location"
     ></directory-picker>
 
-    <button @click="createGame">Create</button>
+    <div class="field">
+      <div class="control">
+        <button class="button is-primary" @click="createGame">Create</button>
+      </div>
+    </div>
   </div>
 </template>
 
